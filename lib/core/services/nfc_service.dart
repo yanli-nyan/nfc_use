@@ -45,7 +45,7 @@ class MqttConfig {
     required this.server,
     this.port = 1883,
     this.clientId = 'nfc_use_app',
-    this.topic = 'nfc_use/send',
+    this.topic = 'home/esp32',
     this.username = '',
     this.password = '',
     this.useAuth = false,

@@ -84,7 +84,7 @@ During import, `character` becomes the card ID, `name` becomes the title, and `c
 
 ## MQTT status and configuration
 
-Choose **MQTT message bus** in Settings, enter the Broker host, port (default `1883`), client ID, topic (default `nfc_use/send`), username, and password, then connect. The service publishes this JSON at QoS 1:
+Choose **MQTT message bus** in Settings, enter the Broker host, port (default `1883`), client ID, topic (default `home/esp32`), username, and password, then connect. The service publishes this JSON at QoS 1:
 
 ```json
 {

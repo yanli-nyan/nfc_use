@@ -265,7 +265,7 @@ class _SettingPageState extends State<SettingPage> {
           ? 'nfc_use_app'
           : _mqttClientIdCtrl.text.trim(),
       topic: _mqttTopicCtrl.text.trim().isEmpty
-          ? 'nfc_use/send'
+          ? 'home/esp32'
           : _mqttTopicCtrl.text.trim(),
       username: _mqttUsernameCtrl.text,
       password: _mqttPasswordCtrl.text,
@@ -661,7 +661,7 @@ class _SettingPageState extends State<SettingPage> {
           icon: Icons.label,
           title: '主题',
           initialValue: _mqttTopicCtrl.text,
-          hintText: 'nfc_use/send',
+          hintText: 'home/esp32',
           onChanged: (v) {
             _mqttTopicCtrl.value = _mqttTopicCtrl.value.copyWith(text: v);
           },
