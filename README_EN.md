@@ -39,7 +39,7 @@ Build a release APK:
 flutter build apk --release
 ```
 
-The current Android application ID is `com.example.nfc_use`. Change it to your own unique ID and configure a production signing key before distribution; release builds currently use the debug signing configuration.
+The current Android application ID is `com.yanli.nfc_use`, and release builds are signed with the production keystore referenced by `android/key.properties`. Create `android/key.properties` from [android/key.properties.example](android/key.properties.example) before the first release build; both that file and the keystore are excluded by `.gitignore` and must never be committed.
 
 ## Use HCE card emulation
 

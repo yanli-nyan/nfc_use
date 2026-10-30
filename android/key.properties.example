@@ -1,0 +1,7 @@
+# 发布签名配置模板
+# 复制为 android/key.properties 后填写真实值；key.properties 已被 .gitignore 排除，不要提交。
+storePassword=你的密钥库口令
+keyPassword=与 storePassword 相同的口令（PKCS12 要求别名口令与库口令一致）
+keyAlias=nfc_use
+# Windows 下需要转义反斜杠，或用正斜杠
+storeFile=D:\\Workspace\\Keys\\nfc_use-release.jks

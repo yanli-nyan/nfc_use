@@ -39,7 +39,7 @@ flutter run
 flutter build apk --release
 ```
 
-当前 Android 包名为 `com.example.nfc_use`。在发布到实际环境前，请修改为自己的唯一包名，并配置正式签名；当前 release 构建仍使用 debug 签名配置。
+当前 Android 包名为 `com.yanli.nfc_use`，release 构建使用 `android/key.properties` 指向的正式密钥库进行签名。首次构建前请参照 [android/key.properties.example](android/key.properties.example) 创建 `android/key.properties`；该文件与密钥库均已被 `.gitignore` 排除，不可提交到仓库。
 
 ## 使用 HCE 卡模拟
 

@@ -69,7 +69,7 @@ class ZipService {
 
       if (externalDir == null) return null;
 
-      // Android: /storage/emulated/0/Android/data/com.example.nfc_use/files
+      // Android: /storage/emulated/0/Android/data/com.yanli.nfc_use/files
       // 需要向上导航到根目录
       String basePath = externalDir.path;
       if (Platform.isAndroid) {
