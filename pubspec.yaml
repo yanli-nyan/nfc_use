@@ -38,7 +38,6 @@ dependencies:
   file_picker: ^10.3.3  # 平台文件选择器
   flutter_nfc_hce: ^0.1.8
   nfc_manager: ^3.5.0
-  mqtt_client: ^10.11.11
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

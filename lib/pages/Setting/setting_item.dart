@@ -13,7 +13,6 @@ import 'package:flutter/material.dart';
 /// 子类通过继承或组合方式扩展不同的功能：
 /// - [StatusTile] - 显示状态信息
 /// - [ActionTile] - 触发操作
-/// - [SwitchTile] - 开关控制
 /// - [InfoTile] - 展示静态信息
 class BaseTile extends StatelessWidget {
   /// 左侧图标
@@ -217,74 +216,6 @@ class ActionTile extends StatelessWidget {
   }
 }
 
-/// 开关控制列表项
-///
-/// 用于控制某个功能的开启/关闭状态，
-/// 右侧显示开关组件，点击可切换状态。
-///
-/// 使用示例：
-/// ```dart
-/// SwitchTile(
-///   icon: Icons.wifi_tethering,
-///   title: '开启卡模拟（HCE）',
-///   subtitle: '让PN532等读卡器可读取手机数据',
-///   value: _isEmulating,
-///   onChanged: (value) => _toggleHce(),
-/// )
-/// ```
-class SwitchTile extends StatelessWidget {
-  /// 左侧图标
-  final IconData icon;
-
-  /// 开关名称
-  final String title;
-
-  /// 开关描述副标题
-  final String subtitle;
-
-  /// 当前开关状态
-  final bool value;
-
-  /// 状态变化回调
-  final ValueChanged<bool>? onChanged;
-
-  /// 创建开关控制列表项
-  ///
-  /// [icon] 左侧图标
-  /// [title] 开关名称
-  /// [subtitle] 开关功能描述
-  /// [value] 当前状态（true为开启）
-  /// [onChanged] 状态变化回调，为null时开关禁用
-  const SwitchTile({
-    super.key,
-    required this.icon,
-    required this.title,
-    required this.subtitle,
-    required this.value,
-    required this.onChanged,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return BaseTile(
-      icon: icon,
-      title: title,
-      subtitle: subtitle,
-      onTap: onChanged == null ? null : () => onChanged!(!value),
-      trailing: Switch(
-        value: value,
-        onChanged: onChanged,
-        activeTrackColor: const Color(0xFF00966A).withValues(alpha: 0.4),
-        thumbColor: WidgetStateProperty.resolveWith(
-          (states) => states.contains(WidgetState.selected)
-              ? const Color(0xFF00966A)
-              : null,
-        ),
-      ),
-    );
-  }
-}
-
 /// 信息展示列表项
 ///
 /// 用于展示静态信息，不可点击，无尾部组件。
@@ -337,7 +268,6 @@ class InfoTile extends StatelessWidget {
 ///   title: 'NFC',
 ///   children: [
 ///     StatusTile(...),
-///     SwitchTile(...),
 ///     ActionTile(...),
 ///   ],
 /// )
@@ -404,98 +334,6 @@ class SettingGroup extends StatelessWidget {
                 child: Divider(height: 1, thickness: 1),
               ),
           ],
-        ],
-      ),
-    );
-  }
-}
-
-/// 文本输入框列表项
-///
-/// 用于让用户输入配置信息，如服务器地址、端口、主题等。
-/// 布局：左侧图标 + 标题 + 右侧 TextField。
-class FieldTile extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final String? initialValue;
-  final String hintText;
-  final ValueChanged<String>? onChanged;
-  final TextInputType? keyboardType;
-  final bool obscureText;
-
-  const FieldTile({
-    super.key,
-    required this.icon,
-    required this.title,
-    this.initialValue,
-    this.hintText = '',
-    this.onChanged,
-    this.keyboardType,
-    this.obscureText = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final controller = TextEditingController(text: initialValue);
-    controller.selection = TextSelection.fromPosition(
-      TextPosition(offset: controller.text.length),
-    );
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      child: Row(
-        children: [
-          Container(
-            width: 36,
-            height: 36,
-            decoration: BoxDecoration(
-              color: const Color(0xFF00966A).withValues(alpha: 0.1),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Icon(icon, color: const Color(0xFF00966A)),
-          ),
-          const SizedBox(width: 12),
-          SizedBox(
-            width: 80,
-            child: Text(
-              title,
-              style: const TextStyle(fontSize: 14, color: Colors.black87),
-            ),
-          ),
-          const SizedBox(width: 8),
-          Expanded(
-            child: TextField(
-              controller: controller,
-              onChanged: onChanged,
-              keyboardType: keyboardType,
-              obscureText: obscureText,
-              style: const TextStyle(fontSize: 14),
-              decoration: InputDecoration(
-                isDense: true,
-                hintText: hintText,
-                hintStyle: const TextStyle(color: Colors.grey, fontSize: 13),
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 10,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(color: Colors.grey.shade300),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(color: Colors.grey.shade300),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: const BorderSide(
-                    color: Color(0xFF00966A),
-                    width: 1.5,
-                  ),
-                ),
-              ),
-            ),
-          ),
         ],
       ),
     );
