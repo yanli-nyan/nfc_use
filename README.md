@@ -111,3 +111,7 @@ android/app/src/main/
   kotlin/.../MainActivity.kt          Flutter MethodChannel 桥接
   res/xml/apduservice.xml             HCE AID 声明
 ```
+
+## 许可证
+
+本项目采用 [MIT License](LICENSE)。

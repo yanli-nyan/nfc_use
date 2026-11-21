@@ -111,3 +111,7 @@ android/app/src/main/
   kotlin/.../MainActivity.kt          Flutter MethodChannel bridge
   res/xml/apduservice.xml             HCE AID declaration
 ```
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
